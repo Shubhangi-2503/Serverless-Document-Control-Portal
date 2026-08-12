@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "DocumentWebClient\\DocumentWebClient.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\ReportProcessorFunction\\ReportProcessorFunction\\ReportProcessorFunction.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

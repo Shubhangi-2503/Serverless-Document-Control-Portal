@@ -1,0 +1,88 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Document Dashboard";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold text-dark">Serverless Document Control</h2>
+        <p class="lead text-muted">A .NET MVC Core Portal integrated with local Azure Functions and Blob Storage</p>
+    </div>
+
+    <!-- Alert Notifications System -->
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert @(Convert.ToBoolean(TempData["IsSuccess"]) ? "alert-success" : "alert-danger") alert-dismissible fade show shadow-sm" role="alert">
+            @TempData["Message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row g-4">
+        <!-- LEFT SIDE: Upload Workspace Component -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 bg-light">
+                <div class="card-body p-4">
+                    <h4 class="card-title fw-bold text-primary mb-3">Upload Workspace</h4>
+                    <p class="text-secondary small mb-4">Choose a local file to hand off to the Azure Function processor execution thread.</p>
+
+                    <!-- enctype="multipart/form-data" is CRITICAL for file streaming -->
+                    <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label class="form-label font-monospace small fw-bold">SELECT FILE ATTACHMENT</label>
+                            <input type="file" name="documentFile" class="form-control form-control-lg shadow-none border-secondary-subtle" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-3 shadow-sm">
+                            Execute Upload Process
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: Real-time Cloud Blob Document List -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4">
+                    <h4 class="card-title fw-bold text-dark mb-4">Stored Cloud Blobs Database</h4>
+
+                    @if (Model == null || !Model.Any())
+                    {
+                        <div class="text-center py-5 text-muted border border-dashed rounded-3">
+                            <p class="mb-0">No documents found inside container 'user-documents'.</p>
+                            <small>Upload your first file to initiate database visualization nodes.</small>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col" class="py-3">Unique Document Key Identifier</th>
+                                        <th scope="col" class="py-3 text-end">Action Interface</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var filename in Model)
+                                    {
+                                        <tr>
+                                            <td class="font-monospace text-truncate small" style="max-width: 400px;">
+                                                @filename
+                                            </td>
+                                            <td class="text-end">
+                                                <a asp-action="DownloadFile" asp-route-fileName="@filename" class="btn btn-outline-dark btn-sm px-3 rounded-2">
+                                                    Download File
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

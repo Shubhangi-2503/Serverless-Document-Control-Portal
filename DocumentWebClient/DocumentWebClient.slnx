@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../ReportProcessorFunction/ReportProcessorFunction/ReportProcessorFunction.csproj" />
+  <Project Path="DocumentWebClient/DocumentWebClient.csproj" />
+</Solution>
