@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DocumentWebClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41e2e0f61b3586d16731eca00157dafcfa93f9e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("DocumentWebClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DocumentWebClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
