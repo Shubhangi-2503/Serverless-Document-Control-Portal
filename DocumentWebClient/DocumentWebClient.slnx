@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../../ServerlessDocPortal/DocumentWebClient/DocumentWebClient/DocumentWebClient.csproj" />
+  <Project Path="../../ServerlessDocPortal/ReportProcessorFunction/ReportProcessorFunction/ReportProcessorFunction.csproj" />
+</Solution>
